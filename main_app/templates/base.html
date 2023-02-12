@@ -24,14 +24,15 @@
                 </ul>
                 <ul class="right">
                     <li><a href="/about">About</a></li>
-                    <li><a href="">All Books</a></li>
-                    {% if account %}
-                    <li><a href="">Sign Up</a></li>
-                    <li><a href="">Log In</a></li>
+                    <li><a href="/">All Books</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="/">Add Book</a></li>
+                    <li><a href="/">Genres</a></li>
+                    <li><a href="/">Authors</a></li>
+                    <li><a href="{% url 'logout' %}">Log Out</a></li>
                     {% else %}
-                    <li><a href="">Genres</a></li>
-                    <li><a href="">Authors</a></li>
-                    <li><a href="">Account</a></li>
+                    <li><a href="{% url 'signup' %}">Register</a></li>
+                    <li><a href="{% url 'login' %}">Log In</a></li>
                     {% endif %}
                 </ul>
             </div>
@@ -41,7 +42,7 @@
     <main class="container">{% block content %} {% endblock %}</main>
 
     <footer class="page-footer">
-        <div class="center">&copy; 2023 Library of Congress (not actually) &ensp;</div>
+        <div class="center">&copy; 2023 Library of Congress (not actually)&ensp;</div>
     </footer>
 </body>
 </html>
