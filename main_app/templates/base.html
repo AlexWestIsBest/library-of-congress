@@ -24,13 +24,22 @@
                 </ul>
                 <ul class="right">
                     <li><a href="/about">About</a></li>
+                    <li><a href="">All Books</a></li>
+                    {% if account %}
+                    <li><a href="">Sign Up</a></li>
+                    <li><a href="">Log In</a></li>
+                    {% else %}
+                    <li><a href="">Genres</a></li>
+                    <li><a href="">Authors</a></li>
+                    <li><a href="">Account</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
     </header>
 
     <main class="container">{% block content %} {% endblock %}</main>
-    
+
     <footer class="page-footer">
         <div class="center">&copy; 2023 Library of Congress (not actually) &ensp;</div>
     </footer>
