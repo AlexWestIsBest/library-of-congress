@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from colorfield.fields import ColorField
 
 # Create your models here.
@@ -33,4 +34,10 @@ class Book(models.Model):
     genre = models.CharField(max_length=2, choices=GENRES)
     bookCover = models.CharField(max_length=1000)
     bookColor = ColorField(samples=COLOR_PALETTE)
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('book_detail', kwargs={'pk': self.id})
 

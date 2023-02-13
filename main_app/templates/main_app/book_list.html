@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Book List</h1>
+
+{% for book in object_list %}
+<div class="row">
+    <div class="card col s6 m4 hoverable">
+        <a href="{% url 'book_detail' book.id%}">
+            <img src="{{ book.bookCover }}" alt="" height="200px">
+            <div class="card-content">
+                <span class="card-title">{{ book.title }}</span>
+                <p>Author: {{ book.author }}</p>
+            </div>
+        </a>
+    </div>
+</div>
+{% endfor %} {% endblock %}
