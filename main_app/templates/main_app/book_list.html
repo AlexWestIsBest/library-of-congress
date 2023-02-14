@@ -4,14 +4,15 @@
 
 {% for book in object_list %}
 <div class="row">
-    <div class="card col s6 m4 hoverable">
-        <a href="{% url 'book_detail' book.id%}">
+    <a href="{% url 'book_detail' book.id %}">
+        <div class="card col s6 m4 hoverable">
             <img src="{{ book.bookCover }}" alt="" height="200px">
             <div class="card-content">
                 <span class="card-title">{{ book.title }}</span>
-                <p>Author: {{ book.author }}</p>
+                <p>{{ book.get_genre_display }} | {{ book.pageCount }} pages</p>
+                <p>By: {{ book.author }}</p>
             </div>
-        </a>
-    </div>
+        </div>
+    </a>
 </div>
 {% endfor %} {% endblock %}

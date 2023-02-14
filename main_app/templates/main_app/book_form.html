@@ -11,12 +11,14 @@
     <table>
         {{ form.as_table }}
     </table>
+    <br>
     {% if object %}
     <input type="submit" value="Save Changes" class="btn" />
     {% else %}
     <input type="submit" value="Add Book" class="btn" />
     {% endif %}
 </form>
+<br>
 
 <script>
     let pubDateEl = document.getElementById('id_pubDate')

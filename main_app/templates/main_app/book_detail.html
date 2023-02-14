@@ -7,7 +7,11 @@
         <img src="{{ book.bookCover }}" alt="" height="200px">
         <div class="card-content">
             <span class="card-title">{{ book.title }}</span>
+            <p>{{ book.get_genre_display }} | {{ book.pageCount }} pages</p>
             <p>Author: {{ book.author }}</p>
+            <br>
+            <p>Published {{ book.pubDate }}</p>
+            <p>ISBN{{ book.isbn }}</p>
         </div>
         <div class="card-action">
             <a href="{% url 'book_update' book.id %}">Edit</a>
@@ -15,4 +19,22 @@
         </div>
     </div>
 </div>
+<div class="col s6">
+    {% if book.author == null and authors.count %}
+        <p>This book has no author. Would you like to add one?</p>
+        <p>Note: You can only do this once.</p>
+        {% for author in authors.all %}
+            <div class="card">
+                <div class="card-content">
+                    <p>{{ author.name }}</p>
+                    <form action="{% url 'add_author' book.id author.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn">Add</button>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
 {% endblock %}
